@@ -28,8 +28,20 @@ function getComputerChoice() {
     return choice;
 }
 
+function getHumanChoice() {
+    let humanChoice = prompt("Choose - Rock, Paper, or Scissors: ");
+
+    console.log(humanChoice);    
+
+    return humanChoice;
+}
+
 //function is called and value returned is held in compChoice 
-compChoice = getComputerChoice();
+let compChoice = getComputerChoice();
 
 // DELETE:: prints value held in compChoice 
-console.log("return of function heldi n compchoice is --> " + compChoice);
+console.log("return of function held in compchoice is --> " + compChoice);
+
+let humChoice = getHumanChoice();
+
+console.log("human choice is -->" + humChoice);
