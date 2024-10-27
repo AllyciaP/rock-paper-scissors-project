@@ -28,7 +28,7 @@ function getComputerChoice() {
 function getHumanChoice() {
     let humanChoice = prompt("Choose - rock, paper, or scissors: ");
 
-
+    // the selection entered is saved
     return humanChoice;
 }
 
@@ -36,13 +36,26 @@ function getHumanChoice() {
 // allows ONE round of game, checking who beats who, then returning the winner
 function playRound(humanChoice, computerChoice) {
 
+    // makes the selection all lower case
     let hChoice = humanChoice.toLowerCase();
+
+    //declares variable to hold the winner: either human or computer
     let winner = "";
 
+    // branch is executed if computer choice is rock
     if (computerChoice === "rock") {
+
+        // computer choice is compared to human choice 
+        // branch is executed if comparison is true 
         if (hChoice === "paper") {
+
+            // winner is displayed
             console.log("You Win! Paper beats Rock!");
+
+            // winner is entered into variable
             winner = "player";
+
+            // winner will be returned if comparison is true
             return winner;
         } else if (hChoice === "scissors") {
             console.log("You Lose! Rock beats Scissors!");
@@ -85,26 +98,39 @@ function playRound(humanChoice, computerChoice) {
 
 }
 
+// this function carries out the game in 5 rounds, showing the final score 
 function playGame() {
+
+    // each hold a score
     let humanScore = 0;
     let computerScore = 0;
 
+    // for loop to play  5 rounds of the game 
     for (let round = 1; round <= 5; round++) {
-        let compChoice = getComputerChoice();
 
+        // this variable holds computer's randdom selection
+        let compChoice = getComputerChoice();
+        
+        // Round is displayed
         console.log("Round: " + round);
 
+        // player's choice is held in this variable after prompt
         let humanChoice = getHumanChoice();
 
+        // a game round is played and the winner is returned and held in this variable 
         let gameWinner = playRound(humanChoice, compChoice);
-
+        
+        // score for either player or computer is added here 
         if (gameWinner === "player") {
             humanScore += 1;
         } else if (gameWinner === "computer") {
             computerScore += 1;
         }
     }
+
+    // display of final results 
     console.log("Final Results: Player won " + humanScore + " out of 5 Games\n The Computer won " + computerScore + " out of 5 Games");
+
 
     if (humanScore > computerScore) {
         console.log("You Won the Game against the Computer!");
@@ -114,40 +140,8 @@ function playGame() {
         console.log("Tied Game!");
     }
 
-
 }
 
-
+// enables game to be played 
 let game = playGame();
 
-// //function is called and value returned is held in compChoice 
-// let compChoice = getComputerChoice();
-
-// // DELETE:: prints value held in compChoice 
-// console.log("return of function held in compchoice is --> " + compChoice);
-
-// //
-// let humChoice = getHumanChoice();
-
-// // DELETE 
-// console.log("human choice is -->" + humChoice);
-
-
-
-// // CHANGE
-// winnerGame = playRound(humChoice, compChoice);
-
-
-// // MOVE
-// let humanScore = 0;
-// let computerScore = 0;
-
-// //move
-
-// if (winnerGame === "player") {
-//     humanScore = humanScore + 1;
-//     console.log("player score = " + humanScore + "----> computer score = " + computerScore);
-// } else if (winnerGame === "computer") {
-//     computerScore = computerScore + 1; 
-//     console.log("player score = " + humanScore + "-----> computer score = " + computerScore);
-// }
