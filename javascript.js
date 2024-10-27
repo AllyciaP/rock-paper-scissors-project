@@ -8,8 +8,6 @@ function getComputerChoice() {
     //declares varibale num and holds a random number 
     let num = Math.random();
 
-    // DELETE for debugging 
-    console.log(num);
 
     //choice depends on  number in num variable 
     if (num >= 0 && num < 0.333) {
@@ -21,8 +19,6 @@ function getComputerChoice() {
         choice = "scissors";
     }
 
-    //DELETE
-    console.log("choice by computer is --> " + choice);
 
     // choice is saved
     return choice;
@@ -32,8 +28,6 @@ function getComputerChoice() {
 function getHumanChoice() {
     let humanChoice = prompt("Choose - rock, paper, or scissors: ");
 
-    // DELETE
-    console.log(humanChoice);
 
     return humanChoice;
 }
@@ -91,32 +85,69 @@ function playRound(humanChoice, computerChoice) {
 
 }
 
-//function is called and value returned is held in compChoice 
-let compChoice = getComputerChoice();
+function playGame() {
+    let humanScore = 0;
+    let computerScore = 0;
 
-// DELETE:: prints value held in compChoice 
-console.log("return of function held in compchoice is --> " + compChoice);
+    for (let round = 1; round <= 5; round++) {
+        let compChoice = getComputerChoice();
 
-//
-let humChoice = getHumanChoice();
+        console.log("Round: " + round);
 
-// DELETE 
-console.log("human choice is -->" + humChoice);
+        let humanChoice = getHumanChoice();
+
+        let gameWinner = playRound(humanChoice, compChoice);
+
+        if (gameWinner === "player") {
+            humanScore += 1;
+        } else if (gameWinner === "computer") {
+            computerScore += 1;
+        }
+    }
+    console.log("Final Results: Player won " + humanScore + " out of 5 Games\n The Computer won " + computerScore + " out of 5 Games");
+
+    if (humanScore > computerScore) {
+        console.log("You Won the Game against the Computer!");
+    } else if (computerScore > humanScore) {
+        console.log("You Lost the Game against the Computer!");
+    } else {
+        console.log("Tied Game!");
+    }
 
 
-
-// CHANGE
-winnerGame = playRound(humChoice, compChoice);
-
-
-// MOVE
-let humanScore = 0;
-let computerScore = 0;
-
-if (winnerGame === "player") {
-    humanScore = humanScore + 1;
-    console.log("player score = " + humanScore + "----> computer score = " + computerScore);
-} else if (winnerGame === "computer") {
-    computerScore = computerScore + 1; 
-    console.log("player score = " + humanScore + "-----> computer score = " + computerScore);
 }
+
+
+let game = playGame();
+
+// //function is called and value returned is held in compChoice 
+// let compChoice = getComputerChoice();
+
+// // DELETE:: prints value held in compChoice 
+// console.log("return of function held in compchoice is --> " + compChoice);
+
+// //
+// let humChoice = getHumanChoice();
+
+// // DELETE 
+// console.log("human choice is -->" + humChoice);
+
+
+
+// // CHANGE
+// winnerGame = playRound(humChoice, compChoice);
+
+
+// // MOVE
+// let humanScore = 0;
+// let computerScore = 0;
+
+// //move
+
+// if (winnerGame === "player") {
+//     humanScore = humanScore + 1;
+//     console.log("player score = " + humanScore + "----> computer score = " + computerScore);
+// } else if (winnerGame === "computer") {
+//     computerScore = computerScore + 1; 
+//     console.log("player score = " + humanScore + "-----> computer score = " + computerScore);
+// }
