@@ -104,8 +104,12 @@ let humChoice = getHumanChoice();
 console.log("human choice is -->" + humChoice);
 
 
+
+// CHANGE
 winnerGame = playRound(humChoice, compChoice);
 
+
+// MOVE
 let humanScore = 0;
 let computerScore = 0;
 
